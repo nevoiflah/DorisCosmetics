@@ -1,0 +1,732 @@
+:root {
+    --color-bg: #FDFCF8;
+    --color-text-main: #581c3c;
+    /* Deep Burgundy */
+    --color-text-muted: #8a6a75;
+    --color-gold: #b78628;
+    --color-gold-light: #e5c585;
+    --color-overlay: rgba(88, 28, 60, 0.4);
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Assistant', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Background Texture */
+.bg-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 2rem;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Typography */
+h1.brand-name {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--color-text-main), #8B4513);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+}
+
+/* Logo */
+.logo-container {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1rem;
+    position: relative;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(88, 28, 60, 0.1));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Gift Card Mockup */
+.gift-card-container {
+    perspective: 1000px;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.gift-card {
+    background: url('assets/card-bg.png');
+    background-size: cover;
+    background-color: #fff;
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(88, 28, 60, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-main);
+    transform: rotateX(5deg) rotateY(-5deg);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    border: 1px solid rgba(183, 134, 40, 0.3);
+}
+
+.gift-card-container:hover .gift-card {
+    transform: rotateX(0deg) rotateY(0deg) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(88, 28, 60, 0.35);
+}
+
+.click-hint {
+    font-size: 1.3rem;
+    /* Larger */
+    font-weight: 700;
+    /* Bolder */
+    margin-top: 1rem;
+    color: var(--color-text-main);
+    /* Darker color for visibility */
+    opacity: 1;
+    /* Fully visible */
+    animation: pulse 2s infinite;
+    text-decoration: underline;
+    /* Extra emphasis */
+}
+
+.card-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.card-logo-small {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Description Text Fix */
+.description {
+    color: var(--color-text-main);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 1px 0 #fff;
+}
+
+/* Buttons */
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: var(--color-text-main);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 10px 20px rgba(88, 28, 60, 0.2);
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+    background: #7a2a55;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(88, 28, 60, 0.3);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-main);
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(88, 28, 60, 0.2);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: transparent;
+    color: var(--color-text-main);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid var(--color-text-main);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-outline:hover {
+    background: var(--color-text-main);
+    color: #fff;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(88, 28, 60, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #FDFCF8;
+    padding: 3rem 2rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(183, 134, 40, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #d1c4c9;
+}
+
+/* Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- New Interactive Form Styles --- */
+.hidden {
+    display: none !important;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+/* Selection Grid */
+.options-grid {
+    display: flex;
+    justify-content: center;
+    /* Center the items */
+    gap: 1rem;
+    /* Slightly larger gap */
+    margin-bottom: 1.5rem;
+}
+
+.option-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 0.8rem 0.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    height: 90px;
+    width: 120px;
+    /* Fixed width for better look */
+}
+
+.option-card.selected {
+    border-color: var(--color-gold);
+    background: #fffcf5;
+    box-shadow: 0 4px 12px rgba(183, 134, 40, 0.15);
+}
+
+.opt-name {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+}
+
+.opt-price {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+}
+
+.custom-input {
+    width: 80%;
+    margin-top: 0.2rem;
+    border: none;
+    border-bottom: 1px solid var(--color-gold);
+    text-align: center;
+    font-family: inherit;
+    outline: none;
+    background: transparent;
+}
+
+/* Inputs */
+.input-field {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: right;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: var(--color-gold);
+}
+
+/* Bit Button */
+.btn-bit {
+    width: 100%;
+    background: #0084F4;
+    /* Bit Blue */
+    color: white;
+    padding: 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 132, 244, 0.3);
+}
+
+.btn-secondary-action {
+    width: 100%;
+    background: transparent;
+    color: var(--color-text-main);
+    border: 1px solid var(--color-text-main);
+    padding: 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-family: inherit;
+}
+
+.form-label {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* =========================================
+   ADMIN PANEL STYLES (NEW)
+   ========================================= */
+
+.admin-header {
+    background: white;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+@media (min-width: 900px) {
+
+    /* FORCE VERTICAL LAYOUT even on desktop */
+    .admin-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.admin-controls-panel {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 600px;
+    /* Limit width */
+}
+
+.admin-preview-area {
+    width: 100%;
+    max-width: 600px;
+    /* Limit width */
+    background: #e4e4e7;
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.admin-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.btn-random {
+    margin-right: 0.5rem;
+    background: transparent;
+    color: var(--color-text-main);
+    border: 1px solid var(--color-gold);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-random:hover {
+    background: var(--color-gold);
+    color: white;
+}
+
+/* --- VOUCHER DESIGN (THE IMAGE) --- */
+#voucher-download-target {
+    width: 1080px;
+    height: 1920px;
+    background: #FDFCF8;
+    position: absolute;
+    /* Changed from relative */
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transform-origin: center center;
+    /* Transformation is handled by JS resizePreview */
+}
+
+.v-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.v-border-inner {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 3px solid var(--color-gold);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.v-top {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.v-logo-img {
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.v-main-title {
+    font-family: var(--font-serif);
+    font-size: 140px;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.v-sub {
+    font-family: var(--font-sans);
+    font-size: 40px;
+    letter-spacing: 10px;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+}
+
+.v-card-body {
+    position: absolute;
+    top: 600px;
+    left: 100px;
+    right: 100px;
+    text-align: center;
+    z-index: 2;
+}
+
+.v-field {
+    margin-bottom: 80px;
+}
+
+.v-label {
+    font-size: 36px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.v-value {
+    font-family: var(--font-serif);
+    font-size: 70px;
+    color: var(--color-text-main);
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    display: inline-block;
+    min-width: 60%;
+}
+
+.v-code-block {
+    position: absolute;
+    bottom: 300px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.v-code-val {
+    display: inline-block;
+    border: 4px dashed var(--color-gold);
+    padding: 30px 80px;
+    font-size: 80px;
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--color-text-main);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+}
+
+.v-footer-text {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    color: var(--color-text-muted);
+}
