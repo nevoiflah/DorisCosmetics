@@ -2,11 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TREATMENT_OPTIONS, DEFAULT_TREATMENT, BUSINESS_PHONE } from '../../constants';
 import { buildOrderWhatsAppUrl } from '../../utils/whatsapp';
-
-const overlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
+import { CloseIcon } from '../icons';
 
 const contentVariants = {
   hidden: { opacity: 0, scale: 0.92, y: 20 },
@@ -69,7 +65,9 @@ export default function VoucherModal({ onClose }) {
       onClick={handleOverlayClick}
     >
       <motion.div className="modal-content" variants={contentVariants} initial="hidden" animate="visible" exit="exit">
-        <button className="close-btn" onClick={onClose}>✕</button>
+        <button className="close-btn" onClick={onClose} aria-label="סגירה">
+          <CloseIcon />
+        </button>
         <motion.h3 className="modal-title" variants={fieldVariants}>רכישת שובר מתנה</motion.h3>
 
         <motion.div className="form-section" variants={fieldVariants}>

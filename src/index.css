@@ -173,9 +173,13 @@ h1.brand-name {
 .card-title {
   font-family: var(--font-serif);
   font-size: 2.1rem;
+  letter-spacing: 1px;
   color: var(--color-gold);
   margin-bottom: 0.4rem;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9),
+    0 -1px 1px rgba(120, 82, 20, 0.35),
+    0 3px 8px rgba(88, 28, 60, 0.18);
 }
 
 .card-text {
@@ -215,7 +219,14 @@ h1.brand-name {
 .btn-primary {
   background: var(--color-text-main);
   color: #fff;
+  border: 1px solid transparent;
   box-shadow: 0 10px 24px rgba(88, 28, 60, 0.25);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  border-color: var(--color-gold-light);
+  box-shadow: 0 12px 28px rgba(88, 28, 60, 0.3), 0 0 0 3px rgba(183, 134, 40, 0.15);
 }
 
 .btn-secondary {
@@ -223,13 +234,27 @@ h1.brand-name {
   backdrop-filter: blur(6px);
   color: var(--color-text-main);
   border: 1px solid rgba(88, 28, 60, 0.18);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-gold);
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(183, 134, 40, 0.25);
 }
 
 .btn-bit {
   background: #0084F4;
   color: #fff;
+  border: 1px solid transparent;
   box-shadow: 0 8px 20px rgba(0, 132, 244, 0.3);
   margin-bottom: 0.75rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-bit:hover {
+  border-color: var(--color-gold-light);
+  box-shadow: 0 10px 24px rgba(0, 132, 244, 0.32), 0 0 0 3px rgba(183, 134, 40, 0.18);
 }
 
 footer {
@@ -258,7 +283,10 @@ footer {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: var(--color-overlay);
+  background: radial-gradient(circle at 30% 15%,
+      rgba(229, 197, 133, 0.35),
+      rgba(88, 28, 60, 0.55) 55%,
+      rgba(58, 15, 34, 0.8) 100%);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -290,9 +318,14 @@ footer {
   position: absolute;
   top: 1rem;
   left: 1.25rem;
-  font-size: 1.4rem;
+  display: inline-flex;
   color: var(--color-text-muted);
   padding: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--color-gold);
 }
 
 .form-section {
@@ -432,6 +465,9 @@ footer {
 }
 
 .admin-exit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
   font-size: 0.85rem;
 }
@@ -479,6 +515,28 @@ footer {
   border: 3px solid var(--color-gold);
   z-index: 1;
   opacity: 0.6;
+}
+
+.v-corner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  opacity: 0.75;
+}
+
+.v-corner-tl {
+  top: 75px;
+  left: 75px;
+  border-top: 4px solid var(--color-gold);
+  border-left: 4px solid var(--color-gold);
+}
+
+.v-corner-br {
+  bottom: 75px;
+  right: 75px;
+  border-bottom: 4px solid var(--color-gold);
+  border-right: 4px solid var(--color-gold);
 }
 
 .v-top {
@@ -552,5 +610,19 @@ footer {
 @media (max-width: 480px) {
   .container {
     padding: 2rem 1.25rem 1rem;
+  }
+}
+
+.icon-spin {
+  animation: icon-spin 0.9s linear infinite;
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

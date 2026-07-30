@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { downloadVoucherImage } from '../../utils/voucherImage';
+import { ArrowLeftIcon, DownloadIcon, SpinnerIcon } from '../icons';
 
 export default function AdminControls({
   recipient,
@@ -80,7 +81,8 @@ export default function AdminControls({
         onClick={handleDownload}
         disabled={isDownloading}
       >
-        <span>{isDownloading ? '⏳' : '⬇'}</span> שמור והורד תמונה
+        {isDownloading ? <SpinnerIcon className="icon-spin" /> : <DownloadIcon />}
+        שמור והורד תמונה
       </motion.button>
 
       <div className="admin-exit">
@@ -91,7 +93,8 @@ export default function AdminControls({
             onExit();
           }}
         >
-          ← יציאה למסך הלקוח
+          <ArrowLeftIcon />
+          יציאה למסך הלקוח
         </a>
       </div>
     </div>

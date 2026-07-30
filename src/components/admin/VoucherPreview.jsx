@@ -28,6 +28,8 @@ const VoucherPreview = forwardRef(function VoucherPreview(
       <div id="voucher-download-target" ref={targetRef}>
         <div className="v-bg" />
         <div className="v-border-inner" />
+        <div className="v-corner v-corner-tl" />
+        <div className="v-corner v-corner-br" />
         <div className="v-top">
           <img src="/assets/logo.png" className="v-logo-img" alt="" />
           <div className="v-main-title">Gift Card</div>

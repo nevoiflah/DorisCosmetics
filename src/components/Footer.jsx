@@ -8,7 +8,7 @@ export default function Footer({ onEnableAdmin }) {
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="footer-address">סמטת הסחלב 5, גנות הדר 📍</div>
+      <div className="footer-address">סמטת הסחלב 5, גנות הדר</div>
       <p>MOMENTS OF BEAUTY</p>
       <div className="admin-trigger" onClick={onEnableAdmin}>π</div>
     </motion.footer>
