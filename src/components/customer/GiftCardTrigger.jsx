@@ -37,13 +37,6 @@ export default function GiftCardTrigger({ onOpen }) {
         </div>
         <div className="card-shine" />
       </motion.div>
-      <motion.div
-        className="click-hint"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        לחצו לרכישת שובר מתנה
-      </motion.div>
     </div>
   );
 }

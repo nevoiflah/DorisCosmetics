@@ -186,13 +186,6 @@ h1.brand-name {
   font-size: 0.95rem;
 }
 
-.click-hint {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-text-main);
-  text-decoration: underline;
-}
-
 .description {
   color: var(--color-text-main);
   margin: 1.5rem 0;
